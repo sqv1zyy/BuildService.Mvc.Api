@@ -1,0 +1,8 @@
+﻿@inject IConfiguration config
+@{
+	AppConfig? appConfig = config.GetSection("Project").Get<AppConfig>();
+}
+<title>@(ViewBag.Tittle ?? appConfig?.Company.CompanyName)</title>
+@* <link rel="shortcut icon" href="~/img/bg01.png" *@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
