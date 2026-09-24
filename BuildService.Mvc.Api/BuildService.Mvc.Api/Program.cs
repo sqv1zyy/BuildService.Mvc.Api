@@ -21,7 +21,18 @@ namespace BuildService.Mvc.Api
 
             // сборка конфигурации
             var app = builder.Build();
-            app.Run();
+
+            // подключение использования статичных файлов
+            app.UseStaticFiles();
+
+            // подключение системы маршрутизации
+            app.UseRouting();
+
+            // регистрация маршрутов
+            app.MapControllerRoute("default", "{controller=Home/action=Index/{id?}}");
+
+
+            await app.RunAsync();
         }
     } 
 }
