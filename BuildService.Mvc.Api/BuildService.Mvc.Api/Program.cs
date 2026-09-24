@@ -1,14 +1,26 @@
+using BuildService.Mvc.Api.infrastructure;
+
 namespace BuildService.Mvc.Api
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            // подключение в конфигурацию файла appsettings.json
+            IConfigurationBuilder configBuild = new ConfigurationBuilder()
+                .SetBasePath(builder.Environment.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddEnvironmentVariables();
+            // делаю секцию Project объектной    
+            IConfiguration configuration = configBuild.Build();
+            AppConfig config = configuration.GetSection("Project").Get<AppConfig>()!;
+
+            // функционал контроллеров
+            builder.Services.AddControllersWithViews();
+
+            // сборка конфигурации
             var app = builder.Build();
-
-            app.MapGet("/", () => "Hello World!");
-
             app.Run();
         }
     } 
