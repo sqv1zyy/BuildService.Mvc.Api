@@ -29,7 +29,7 @@ namespace BuildService.Mvc.Api
             app.UseRouting();
 
             // регистрация маршрутов
-            app.MapControllerRoute("default", "{controller=Home}/{action=Index/{id?}}");
+            app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 
             await app.RunAsync();
