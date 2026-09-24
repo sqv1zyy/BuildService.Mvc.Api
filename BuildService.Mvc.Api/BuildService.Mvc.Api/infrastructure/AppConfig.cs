@@ -1,4 +1,4 @@
-﻿namespace BuildService.Mvc.Api
+﻿namespace BuildService.Mvc.Api.infrastructure
 {
     public class AppConfig
     {
