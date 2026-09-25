@@ -6,6 +6,10 @@
 	  <WarningsAsErrors>true</WarningsAsErrors>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
  
  
   <ItemGroup>
@@ -17,10 +21,10 @@
     <Folder Include="wwwroot\scss\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\img\" />
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="bundleconfig.json" />
     <None Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
 
