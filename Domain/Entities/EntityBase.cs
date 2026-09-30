@@ -11,5 +11,6 @@ namespace BuildService.Mvc.Api.Domain.Entities
         [MaxLength(256)]
         public string? Title { get; set; }
 
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
     }
 }

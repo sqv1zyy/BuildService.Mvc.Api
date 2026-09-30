@@ -19,8 +19,16 @@ namespace BuildService.Mvc.Api
             // функционал контроллеров
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddSwaggerGen();
+
             // сборка конфигурации
             var app = builder.Build();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger(); 
+                app.UseSwaggerUI(); 
+            }
 
             // подключение использования статичных файлов
             app.UseStaticFiles();

@@ -1,6 +1,7 @@
-﻿namespace BuildService.Mvc.Api.Domain.Entities
+﻿
+namespace BuildService.Mvc.Api.Domain.Entities;
+public class ServiceCategory : EntityBase
 {
-    public class ServiceCategory
-    {
-    }
+    //Связь услуги - категории : 1 к N
+    public ICollection<Service> Services { get; set; } 
 }
