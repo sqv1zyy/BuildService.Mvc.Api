@@ -18,6 +18,7 @@ namespace BuildService.Mvc.Api.Domain.Entities
         public string? Description {  get; set; }
 
         [Display(Name = "Титульное изображение")]
+        [MaxLength(300)]
         public string? Photo {  get; set; }
 
         [Display(Name = "Тип услуги")]
