@@ -1,0 +1,54 @@
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using BuildService.Mvc.Api.Domain.Entities;
+
+namespace BuildService.Mvc.Api.Domain
+{
+    public class AppDbContext : IdentityDbContext<IdentityUser>
+    {
+        public DbSet<ServiceCategory> ServiceCategories { get; set; } = null!;
+        public DbSet<Service> services { get; set; } = null!;
+
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            string adminName = "admin";
+            string roleAdminId = "E6B29BA3-70C5-4D0B-B23B-F78186438B19";
+            string userAdminId = "18C16A48-321D-4765-AF34-99AB99B343F0";
+            string _email = adminName.ToUpper();
+
+            // Добавление роли админа
+
+            builder.Entity<IdentityRole>().HasData(new IdentityRole()
+            {
+                Id = roleAdminId,
+                Name = adminName,
+                NormalizedName = adminName.ToUpper()
+            });
+
+            // Пользователь с админкой
+
+            builder.Entity<IdentityUser>().HasData(new IdentityUser()
+            {
+                Id = userAdminId,
+                UserName = adminName,
+                NormalizedUserName = adminName.ToUpper(),
+                Email = _email,
+                NormalizedEmail = _email,
+                EmailConfirmed = true,
+                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(
+                    new IdentityUser(), adminName),
+                PhoneNumberConfirmed = true,
+
+            });
+        }
+
+
+    }
+}
