@@ -8,7 +8,7 @@ namespace BuildService.Mvc.Api.Domain
     public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<ServiceCategory> ServiceCategories { get; set; } = null!;
-        public DbSet<Service> services { get; set; } = null!;
+        public DbSet<Service> Services { get; set; } = null!;
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
