@@ -17,6 +17,7 @@
     <Folder Include="Domain\Enums\" />
     <Folder Include="Domain\Repositories\Abstract\" />
     <Folder Include="Domain\Repositories\EntityFraemwork\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Models\ViewComponents\" />
     <Folder Include="wwwroot\scss\" />
     <Folder Include="wwwroot\css\" />
@@ -53,6 +54,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>

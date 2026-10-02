@@ -4,7 +4,12 @@
     {
         public TinyMceConfig TinyMce { get; set; } = new();
         public CompanyConfig Company { get; set; } = new();
+        public DataBase DataBase { get; set; } = new();
 
+    }
+    public class DataBase
+    {
+        public string ConnectionString { get; set; }
     }
     public class TinyMceConfig
     {

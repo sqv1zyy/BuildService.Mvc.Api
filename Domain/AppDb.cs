@@ -21,6 +21,7 @@ namespace BuildService.Mvc.Api.Domain
             string adminName = "admin";
             string roleAdminId = "E6B29BA3-70C5-4D0B-B23B-F78186438B19";
             string userAdminId = "18C16A48-321D-4765-AF34-99AB99B343F0";
+            string adminPasswordHash = "AQAAAAIAAYagAAAAEG4Pxl+CvlJ/L31x3/9B1V1PqR+S413B6pI4O+aG+J5h+yB==";
             string _email = adminName.ToUpper();
 
             // Добавление роли админа
@@ -42,10 +43,16 @@ namespace BuildService.Mvc.Api.Domain
                 Email = _email,
                 NormalizedEmail = _email,
                 EmailConfirmed = true,
-                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(
-                    new IdentityUser(), adminName),
+                PasswordHash = adminPasswordHash,
                 PhoneNumberConfirmed = true,
 
+            });
+
+            builder.Entity<IdentityUserRole<string>>()
+                .HasData(new IdentityUserRole<string>()
+            {
+                RoleId = roleAdminId,
+                UserId = userAdminId
             });
         }
 

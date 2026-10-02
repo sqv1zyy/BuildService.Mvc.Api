@@ -1,4 +1,8 @@
+using BuildService.Mvc.Api.Domain;
 using BuildService.Mvc.Api.infrastructure;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace BuildService.Mvc.Api
 {
@@ -12,12 +16,37 @@ namespace BuildService.Mvc.Api
                 .SetBasePath(builder.Environment.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables();
-            // делаю секцию Project объектной    
+            // делаю секцию Project объектной
             IConfiguration configuration = configBuild.Build();
             AppConfig config = configuration.GetSection("Project").Get<AppConfig>()!;
 
+            // подключение контекст бд
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(config.DataBase.ConnectionString)
+    .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning)));
+
             // функционал контроллеров
             builder.Services.AddControllersWithViews();
+
+            // настройка Identity system
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+            // настройка куки аунтификации
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "domstroi";
+                options.Cookie.HttpOnly = true;
+                options.LoginPath = "/admin/login";
+                options.AccessDeniedPath = "/admin/accessdenied";
+                options.SlidingExpiration = true;
+            });
 
             builder.Services.AddSwaggerGen();
 
@@ -26,8 +55,8 @@ namespace BuildService.Mvc.Api
 
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger(); 
-                app.UseSwaggerUI(); 
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             // подключение использования статичных файлов
@@ -36,11 +65,15 @@ namespace BuildService.Mvc.Api
             // подключение системы маршрутизации
             app.UseRouting();
 
+            // подключаю аутентификацию и авторизацию
+            app.UseCookiePolicy();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             // регистрация маршрутов
             app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
-
             await app.RunAsync();
         }
-    } 
+    }
 }
