@@ -1,4 +1,5 @@
 ﻿using BuildService.Mvc.Api.Domain.Repositories;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,8 +15,10 @@ namespace BuildService.Mvc.Api.Controllers.Admin
             _dataManager = dataManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            ViewBag.ServiceCategories = await _dataManager.ServicesCategories.GetServiceCategoriesAsync();
+            ViewBag.Services = await _dataManager.Services.GetServicesAsync();
             return View();
         }
     }
