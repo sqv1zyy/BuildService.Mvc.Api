@@ -62,5 +62,12 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>
-
+	<Target Name="CopyTinyMCE" BeforeTargets="Build">
+    <ItemGroup>
+      <TinyMCEFiles Include="$(NugetPackageRoot)tinymce\**\content\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(TinyMCEFiles)" 
+          DestinationFolder="$(MSBuildProjectDirectory)\wwwroot\lib\tinymce\%(RecursiveDir)" 
+          SkipUnchangedFiles="true" />
+  </Target>
 </Project>

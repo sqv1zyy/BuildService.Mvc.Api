@@ -61,6 +61,7 @@ namespace BuildService.Mvc.Api
             builder.Services.AddSwaggerGen();
 
             // сборка конфигурации
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())

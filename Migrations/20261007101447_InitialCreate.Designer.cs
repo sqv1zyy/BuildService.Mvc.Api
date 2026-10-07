@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BuildService.Mvc.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261002110453_InitialCreate")]
+    [Migration("20261007101447_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -63,7 +63,7 @@ namespace BuildService.Mvc.Api.Migrations
 
                     b.HasIndex("ServiceCategoryId");
 
-                    b.ToTable("services");
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("BuildService.Mvc.Api.Domain.Entities.ServiceCategory", b =>
@@ -116,7 +116,7 @@ namespace BuildService.Mvc.Api.Migrations
                         new
                         {
                             Id = "E6B29BA3-70C5-4D0B-B23B-F78186438B19",
-                            ConcurrencyStamp = "fe557b45-9360-44fe-a480-9bc141bc1e31",
+                            ConcurrencyStamp = "f77ca81d-2372-4bab-9eca-d1e41fff96bf",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -215,15 +215,15 @@ namespace BuildService.Mvc.Api.Migrations
                         {
                             Id = "18C16A48-321D-4765-AF34-99AB99B343F0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9df268b5-0c7c-4b41-a0b7-bd17164529d1",
+                            ConcurrencyStamp = "C8F53A02-9988-4A51-A3C2-821B0F2104E9",
                             Email = "ADMIN",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG4Pxl+CvlJ/L31x3/9B1V1PqR+S413B6pI4O+aG+J5h+yB==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBSIA8AoX6A9QraVB4D5QaYTA48l37VHtVG65S9xl4fOtaFfU3eOlSRP3rbb897nuQ==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "ee513f85-0ab0-4a3a-a6f0-2054a2e4a888",
+                            SecurityStamp = "B4C2518D-065C-4F71-B67B-01B6B2B289C8",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });

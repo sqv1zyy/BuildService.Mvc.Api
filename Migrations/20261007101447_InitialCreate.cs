@@ -172,7 +172,7 @@ namespace BuildService.Mvc.Api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "services",
+                name: "Services",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -187,9 +187,9 @@ namespace BuildService.Mvc.Api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_services", x => x.Id);
+                    table.PrimaryKey("PK_Services", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_services_ServiceCategories_ServiceCategoryId",
+                        name: "FK_Services_ServiceCategories_ServiceCategoryId",
                         column: x => x.ServiceCategoryId,
                         principalTable: "ServiceCategories",
                         principalColumn: "Id");
@@ -198,12 +198,12 @@ namespace BuildService.Mvc.Api.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "E6B29BA3-70C5-4D0B-B23B-F78186438B19", "fe557b45-9360-44fe-a480-9bc141bc1e31", "admin", "ADMIN" });
+                values: new object[] { "E6B29BA3-70C5-4D0B-B23B-F78186438B19", "f77ca81d-2372-4bab-9eca-d1e41fff96bf", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "18C16A48-321D-4765-AF34-99AB99B343F0", 0, "9df268b5-0c7c-4b41-a0b7-bd17164529d1", "ADMIN", true, false, null, "ADMIN", "ADMIN", "AQAAAAIAAYagAAAAEG4Pxl+CvlJ/L31x3/9B1V1PqR+S413B6pI4O+aG+J5h+yB==", null, true, "ee513f85-0ab0-4a3a-a6f0-2054a2e4a888", false, "admin" });
+                values: new object[] { "18C16A48-321D-4765-AF34-99AB99B343F0", 0, "C8F53A02-9988-4A51-A3C2-821B0F2104E9", "ADMIN", true, false, null, "ADMIN", "ADMIN", "AQAAAAIAAYagAAAAEBSIA8AoX6A9QraVB4D5QaYTA48l37VHtVG65S9xl4fOtaFfU3eOlSRP3rbb897nuQ==", null, true, "B4C2518D-065C-4F71-B67B-01B6B2B289C8", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -248,8 +248,8 @@ namespace BuildService.Mvc.Api.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_services_ServiceCategoryId",
-                table: "services",
+                name: "IX_Services_ServiceCategoryId",
+                table: "Services",
                 column: "ServiceCategoryId");
         }
 
@@ -272,7 +272,7 @@ namespace BuildService.Mvc.Api.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "services");
+                name: "Services");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
