@@ -66,8 +66,6 @@
     <ItemGroup>
       <TinyMCEFiles Include="$(NugetPackageRoot)tinymce\**\content\**\*.*" />
     </ItemGroup>
-    <Copy SourceFiles="@(TinyMCEFiles)" 
-          DestinationFolder="$(MSBuildProjectDirectory)\wwwroot\lib\tinymce\%(RecursiveDir)" 
-          SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(TinyMCEFiles)" DestinationFolder="$(MSBuildProjectDirectory)\wwwroot\lib\tinymce\%(RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
 </Project>

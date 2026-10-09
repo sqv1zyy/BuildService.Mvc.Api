@@ -1,5 +1,6 @@
 ﻿using BuildService.Mvc.Api.Domain.Entities;
 using BuildService.Mvc.Api.Domain.Repositories;
+using BuildService.Mvc.Api.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuildService.Mvc.Api.Models.Components.Menu
@@ -16,8 +17,8 @@ namespace BuildService.Mvc.Api.Models.Components.Menu
         public async Task<IViewComponentResult> InvokeAsync()
         {
             IEnumerable<Service> list = await _dataManager.Services.GetServicesAsync();
-
-            return await Task.FromResult((IViewComponentResult) View("Default", list));
+            IEnumerable<ServiceDTO> listDTO = HelperDTO.TransformServices(list);
+            return await Task.FromResult((IViewComponentResult) View("Default", listDTO));
         }
     }
 }

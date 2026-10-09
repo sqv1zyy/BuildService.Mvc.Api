@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Service>
+﻿@model IEnumerable<ServiceDTO>
 
 <nav id="nav">
     <ul>
@@ -11,7 +11,7 @@
         <li>
             <a asp-area="" asp-controller="Services" asp-action="Index">Услуги</a>
             <ul>
-                @foreach (Service entity in Model)
+                @foreach (ServiceDTO entity in Model)
                 {
                     <li>
                         <a asp-area="" asp-controller="Services" asp-action="Show" asp-route-id="@entity.Id">
