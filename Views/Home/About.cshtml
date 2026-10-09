@@ -1,0 +1,112 @@
+﻿@inject IConfiguration Config
+
+@{
+    AppConfig? appConfig = Config.GetSection("Project").Get<AppConfig>();
+    var companyName = appConfig?.Company?.CompanyName ?? "Дом Строй";
+    var companyPhone = appConfig?.Company?.CompanyPhone ?? "+7 (999) 222-11-33";
+    var companyPhoneShort = appConfig?.Company?.CompanyPhoneShort ?? "+799922211133";
+    var companyEmail = appConfig?.Company?.CompanyEmail ?? "support@domstroi.com";
+
+    ViewBag.Title = ViewBag.Title ?? $"О компании — {companyName}";
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+    
+    <link rel="shortcut icon" href="~/img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/about-hero.jpg') center/cover no-repeat;
+            color: #fff;
+            padding: 80px 0;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">О компании «@companyName»</h1>
+            <p class="lead mt-3">Строим надежное будущее и комфортное жилье для вашей семьи</p>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <section class="row align-items-center mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="fw-bold mb-3">Кто мы такие</h2>
+                <p class="text-muted">
+                    Строительная компания <strong>«@companyName»</strong> специализируется на возведении современных, энергоэффективных и долговечных жилых домов. Мы берем на себя весь цикл работ — от проектирования до сдачи объекта «под ключ».
+                </p>
+                <p class="text-muted">
+                    Наша цель — сделать процесс строительства понятным и прозрачным для каждого клиента, гарантируя высокое качество материалов и строгое соблюдение сроков.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img src="~/img/about-building.jpg" alt="@companyName" class="img-fluid rounded-3 shadow-sm" />
+            </div>
+        </section>
+
+        <section class="my-5 py-4 bg-light rounded-4 px-4 px-md-5">
+            <h2 class="text-center fw-bold mb-5">Почему выбирают нас</h2>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h4 class="fw-semibold">Гарантия качества</h4>
+                    <p class="text-muted">Используем сертифицированные материалы и строго соблюдаем строительные нормы (СНиП и ГОСТ).</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-clock-history"></i>
+                    </div>
+                    <h4 class="fw-semibold">Точно в срок</h4>
+                    <p class="text-muted">Фиксируем этапы и финальные сроки сдачи в договоре. За каждый день просрочки несем ответственность.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-piggy-bank"></i>
+                    </div>
+                    <h4 class="fw-semibold">Прозрачные сметы</h4>
+                    <p class="text-muted">Никаких скрытых платежей и неожиданных расходов. Смета фиксируется до начала работ.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="row my-5">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-3">Свяжитесь с нами</h2>
+                <p class="text-muted mb-4">Готовы обсудить ваш будущий дом? Звоните или пишите нам прямо сейчас!</p>
+                
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="tel:@companyPhoneShort" class="btn btn-primary btn-lg">
+                        <i class="bi bi-telephone-fill me-2"></i>@companyPhone
+                    </a>
+                    <a href="mailto:@companyEmail" class="btn btn-outline-secondary btn-lg">
+                        <i class="bi bi-envelope-fill me-2"></i>@companyEmail
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-4 text-center mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; @DateTime.Now.Year «@companyName». Все права защищены.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

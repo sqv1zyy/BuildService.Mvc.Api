@@ -12,5 +12,10 @@ namespace BuildService.Mvc.Api.controllers
         {
             return View();
         }
+
+        public IActionResult About()
+        {
+            return View();
+        }
     }
 }
