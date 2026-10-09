@@ -8,5 +8,9 @@ namespace BuildService.Mvc.Api.controllers
         {
             return View();
         }
+        public IActionResult Contacts()
+        {
+            return View();
+        }
     }
 }
