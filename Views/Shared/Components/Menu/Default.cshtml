@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Service>
+
+<nav id="nav">
+    <ul>
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="About">О нас</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Services" asp-action="Index">Услуги</a>
+            <ul>
+                @foreach (Service entity in Model)
+                {
+                    <li>
+                        <a asp-area="" asp-controller="Services" asp-action="Show" asp-route-id="@entity.Id">
+                            @entity.Title
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="Contacts">Контакты</a>
+        </li>
+    </ul>
+</nav>

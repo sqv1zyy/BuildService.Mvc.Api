@@ -1,6 +1,8 @@
-﻿namespace BuildService.Mvc.Api.Models.Components.Menu
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace BuildService.Mvc.Api.Models.Components.Menu
 {
-    public class MenuViewComponent
+    public class MenuViewComponent : ViewComponent
     {
     }
 }
