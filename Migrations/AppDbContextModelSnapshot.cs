@@ -31,7 +31,7 @@ namespace BuildService.Mvc.Api.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .HasMaxLength(100000)
@@ -72,7 +72,7 @@ namespace BuildService.Mvc.Api.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -113,7 +113,7 @@ namespace BuildService.Mvc.Api.Migrations
                         new
                         {
                             Id = "E6B29BA3-70C5-4D0B-B23B-F78186438B19",
-                            ConcurrencyStamp = "f77ca81d-2372-4bab-9eca-d1e41fff96bf",
+                            ConcurrencyStamp = "168e83ff-e9c4-4468-8e68-a0bc6ff2f344",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -218,7 +218,7 @@ namespace BuildService.Mvc.Api.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBSIA8AoX6A9QraVB4D5QaYTA48l37VHtVG65S9xl4fOtaFfU3eOlSRP3rbb897nuQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENKdip/GZfp1mNg8rqNBRc+2xa3tGz3oLSU6ZIy7FlLExpiWr/rETX7ij605DFtMxw==",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "B4C2518D-065C-4F71-B67B-01B6B2B289C8",
                             TwoFactorEnabled = false,

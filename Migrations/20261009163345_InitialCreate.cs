@@ -58,7 +58,7 @@ namespace BuildService.Mvc.Api.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    DateCreated = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,7 +183,7 @@ namespace BuildService.Mvc.Api.Migrations
                     Photo = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: true),
                     Type = table.Column<int>(type: "integer", nullable: false),
                     Title = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    DateCreated = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -198,12 +198,12 @@ namespace BuildService.Mvc.Api.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "E6B29BA3-70C5-4D0B-B23B-F78186438B19", "f77ca81d-2372-4bab-9eca-d1e41fff96bf", "admin", "ADMIN" });
+                values: new object[] { "E6B29BA3-70C5-4D0B-B23B-F78186438B19", "168e83ff-e9c4-4468-8e68-a0bc6ff2f344", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "18C16A48-321D-4765-AF34-99AB99B343F0", 0, "C8F53A02-9988-4A51-A3C2-821B0F2104E9", "ADMIN", true, false, null, "ADMIN", "ADMIN", "AQAAAAIAAYagAAAAEBSIA8AoX6A9QraVB4D5QaYTA48l37VHtVG65S9xl4fOtaFfU3eOlSRP3rbb897nuQ==", null, true, "B4C2518D-065C-4F71-B67B-01B6B2B289C8", false, "admin" });
+                values: new object[] { "18C16A48-321D-4765-AF34-99AB99B343F0", 0, "C8F53A02-9988-4A51-A3C2-821B0F2104E9", "ADMIN", true, false, null, "ADMIN", "ADMIN", "AQAAAAIAAYagAAAAENKdip/GZfp1mNg8rqNBRc+2xa3tGz3oLSU6ZIy7FlLExpiWr/rETX7ij605DFtMxw==", null, true, "B4C2518D-065C-4F71-B67B-01B6B2B289C8", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

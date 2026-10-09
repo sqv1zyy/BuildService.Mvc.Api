@@ -2431,7 +2431,7 @@ input::-moz-focus-inner {
 .img-block {
 	display: block;
 	margin: 0 auto;
-	max-width: 100%;
+	max-width: 700px;
 }
 
 .text-bold {
@@ -2444,4 +2444,8 @@ input::-moz-focus-inner {
 
 .service-item {
 	padding: 30px 0;
+}
+.service-item img{
+	display: block;
+	max-width: 1000px;
 }
