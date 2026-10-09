@@ -1,0 +1,34 @@
+# Игнорировать папки сборки и вывода локального компилятора
+**/bin/
+**/obj/
+
+# Игнорировать результаты публикации
+**/out/
+**/dist/
+
+# Игнорировать папки инструментов и локальных настроек VS / Rider
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Игнорировать логи
+*.log
+logs/
+
+# Игнорировать файлы Docker, которые не нужны внутри самого контейнера
+Dockerfile
+.dockerignore
+docker-compose*
+
+# Игнорировать систему контроля версий
+.git/
+.gitignore
+
+# Игнорировать секреты и локальные переменные окружения (ОЧЕНЬ ВАЖНО)
+.env
+appsettings.Development.json
+appsettings.Local.json

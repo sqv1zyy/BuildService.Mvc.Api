@@ -83,7 +83,11 @@ namespace BuildService.Mvc.Api
 
             // регистрация маршрутов
             app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                await dbContext.Database.EnsureCreatedAsync();
+            }
             await app.RunAsync();
         }
     }

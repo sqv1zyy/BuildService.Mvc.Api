@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # Сервис базы данных PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: buildservice_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: dom_stroi
+    ports:
+      - "5432:5432" # Чтобы можно было подключиться к БД с хост-машины (например, через pgAdmin)
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Сохранение данных между перезапусками
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: buildservice_api
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - Project__Database__ConnectionString=Host=db;Port=5432;Database=dom_stroi;Username=postgres;Password=admin
+      - ASPNETCORE_ENVIRONMENT=Production # или Development, по желанию
+    depends_on:
+      db:
+        condition: service_healthy 
+
+volumes:
+  postgres_data:
