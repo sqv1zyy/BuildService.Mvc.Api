@@ -79,7 +79,7 @@
 
 #### 1. Клонирование репозитория
 ```bash
-git clone <URL_ВАШЕГО_РЕПОЗИТОРИЯ>
+git clone https://github.com/sqv1zyy/BuildService.Mvc.Api.git
 cd BuildService.Mvc.Api
 ```
 
