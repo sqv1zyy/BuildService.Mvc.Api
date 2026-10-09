@@ -14,6 +14,7 @@ namespace BuildService.Mvc.Api.Controllers
         {
             _dataManager = dataManager;
         }
+
         public async Task<IActionResult> Index()
         {
             IEnumerable<Service> list = await _dataManager.Services.GetServicesAsync();
@@ -21,6 +22,18 @@ namespace BuildService.Mvc.Api.Controllers
             IEnumerable<ServiceDTO> listDTO = HelperDTO.TransformServices(list);
 
             return View(listDTO);
+        }
+
+        public async Task<IActionResult> Show(int id)
+        {
+            Service? entity = await _dataManager.Services.GetServicesByIdAsync(id);
+
+            if (entity is null)
+                return NotFound();
+
+            ServiceDTO entityDTO = HelperDTO.TransformService(entity);
+
+            return View(entityDTO);
         }
     }
 }
